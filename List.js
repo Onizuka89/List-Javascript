@@ -206,4 +206,4 @@ function List(input){
 }
 
 //Testing code
-x = new List([10,16,20,40,"Hello"]);
+//x = new List([10,16,20,40,"Hello"]);
