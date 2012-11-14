@@ -1,5 +1,5 @@
-/* List
- *  Copyright Stian Drøbak
+/*  List - Python like list v0.3.0
+ *  Copyright (c) 2012, Stian Drøbak
  *
  *  This an attempt to deal with arrays in a manner 
  *  more similar to that of Python's List by creating 
@@ -8,6 +8,7 @@
  *  It also includes a function called len, that will
  *  return the length of arrays, and 
  */
+0
 
 /* arrayType
  *
@@ -102,7 +103,6 @@ function List(input){
      * -return    It returns  the value poped, or null uppon failure
      */
     this.pop = function(element){
-        this.next = 0;
         if(element == null){
             element = 0;
         }else if(element == -1){
@@ -168,13 +168,42 @@ function List(input){
     }
 
     this.print = function(){
+        string = "[";
         for(var i = 0; i < len(this.array); i++){
-            alert(this.array[i]);
+            if(i != 0){
+                string += ", ";
+            }
+            string += this.array[i];
         }
-        return len(this.array);
+        return string + "]"; 
+    }
+    /*
+     * remove
+     *
+     * removes the value from the list if found
+     * @item    - item to look for and remove
+     * -return  - true if found, false if not.
+     */
+
+    this.remove = function(item){
+        deleted = 0;
+        newArray = new Array();
+        for(i in this.array){
+            if(this.array[i] == item && deleted == 0){
+                deleted = 1;
+                continue;
+            }
+            newArray[i-deleted] = this.array[i];
+        }
+        if(deleted == 0){
+            return false;
+        }else{
+            this.array = newArray;
+            return true;
+        }
     }
 
 }
 
 //Testing code
-//x = new List([10,16,20,40]);
+x = new List([10,16,20,40,"Hello"]);
