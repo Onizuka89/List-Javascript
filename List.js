@@ -1,9 +1,10 @@
-/*  List - Python like list v0.3.0
+/*  List - Python inspired list v0.3.1
  *  Copyright (c) 2012, Stian Drøbak
  *
  *  This an attempt to deal with arrays in a manner 
  *  more similar to that of Python's List by creating 
- *  a class called List.
+ *  a class called List, that mixes som featuers from
+ *  List and Dictionary
  *
  *  It also includes a function called len, that will
  *  return the length of arrays, and 
@@ -77,6 +78,7 @@ function isIn(item, array){
  *          array is provided it will be the start
  *          value of the object.
  */
+
 function List(input){
     if(input != null){
         this.array = input;
@@ -202,7 +204,22 @@ function List(input){
             return true;
         }
     }
+    /*
+     * indexOf
+     *
+     * looks for matching value and returns index
+     * @item    - value to look for in list
+     * -return  - index of item match, or null
+     */
 
+    this.indexOf = function(item){
+        for(var i in this.array){
+            if(this.array[i] == item){
+                return i;
+            }
+        }
+        return null;
+    }
 }
 
 //Testing code
